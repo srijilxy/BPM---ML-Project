@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPM Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: #f8f9fa;
+            min-height: 100vh;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        .container {
+            background: rgba(30, 30, 40, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 2.5rem 2rem;
+            margin-top: 4rem;
+            max-width: 480px;
+        }
+        h1 {
+            background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+        label {
+            font-weight: 500;
+            color: #ffb3b3;
+        }
+        .form-control {
+            background: #232526;
+            color: #fff;
+            border: 1px solid #ff512f;
+            border-radius: 8px;
+        }
+        .form-control:focus {
+            border-color: #dd2476;
+            box-shadow: 0 0 0 0.2rem rgba(221,36,118,.25);
+    </style>
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Predict Beats Per Minute (BPM)</h1>
+        <form method="post" class="mt-4">
+            <div class="form-group">
+                <label for="RhythmScore">RhythmScore:</label>
+                <input type="number" step="any" class="form-control" id="RhythmScore" name="RhythmScore" required value="0.8">
+            </div>
+            <div class="form-group">
+                <label for="Energy">Energy:</label>
+                <input type="number" step="any" class="form-control" id="Energy" name="Energy" required value="0.6">
+            </div>
+            <div class="form-group">
+                <label for="AudioLoudness">AudioLoudness:</label>
+                <input type="number" step="any" class="form-control" id="AudioLoudness" name="AudioLoudness" required value="-5.0">
+            </div>
+            <div class="form-group">
+                <label for="TrackDurationMs">TrackDurationMs:</label>
+                <input type="number" step="any" class="form-control" id="TrackDurationMs" name="TrackDurationMs" required value="210000">
+            </div>
+            <div class="form-group">
+                <label for="AcousticQuality">AcousticQuality:</label>
+                <input type="number" step="any" class="form-control" id="AcousticQuality" name="AcousticQuality" required value="0.7">
+            </div>
+            <div class="form-group">
+                <label for="InstrumentalScore">InstrumentalScore:</label>
+                <input type="number" step="any" class="form-control" id="InstrumentalScore" name="InstrumentalScore" required value="0.2">
+            </div>
+            <div class="form-group">
+                <label for="VocalContent">VocalContent:</label>
+                <input type="number" step="any" class="form-control" id="VocalContent" name="VocalContent" required value="0.9">
+            </div>
+            <div class="form-group">
+                <label for="LivePerformanceLikelihood">LivePerformanceLikelihood:</label>
+                <input type="number" step="any" class="form-control" id="LivePerformanceLikelihood" name="LivePerformanceLikelihood" required value="0.1">
+            </div>
+            <div class="form-group">
+                <label for="MoodScore">MoodScore:</label>
+                <input type="number" step="any" class="form-control" id="MoodScore" name="MoodScore" required value="0.75">
+            </div>
+            <button type="submit" class="btn btn-primary">Predict BPM</button>
+        </form>
+        <div class="mt-4">
+            {% if prediction is not none %}
+                <h3>Predicted BPM:</h3>
+                <p>{{ prediction }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
