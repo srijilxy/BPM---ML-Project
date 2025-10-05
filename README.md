@@ -1,3 +1,5 @@
+<h1> BeatWise</h1>
+
 # BPM Prediction Web App (Beats Per Minuts)
 
 A machine learning-powered web application for predicting the Beats Per Minute (BPM) of a music track using audio and track features. Built with Flask and scikit-learn, this project demonstrates end-to-end ML deployment for music analytics.
